@@ -1,2 +1,2 @@
 # ipg-sdk
-IPG SDK
+IPG SDK JS
