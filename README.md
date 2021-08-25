@@ -28,7 +28,7 @@ Sandbox: https://sandboxipgsdk.payable.lk/sdk/v2/payable-checkout.js
 ```
 <b>2.</b> Create your checkout form with basic required fields.
 
-<b>2.1</b> Required Form Parameters:
+2.1. Required Form Parameters:
 
 - `notify_url` - URL to callback the status of the payment (Needs to be a URL accessible on a public IP/domain)
 - `return_url` - URL to redirect users when success
@@ -51,7 +51,7 @@ Sandbox: https://sandboxipgsdk.payable.lk/sdk/v2/payable-checkout.js
 - `billing_address_country` - Billing Country (LKA)
 - `billing_address_postcode` - Billing Postal Code
 
-<b>2.2</b> Optional Form Parameters:
+2.2. Optional Form Parameters:
 
 - `custom_1` - Merchant specific data, a Custom 1
 - `custom_2` - Merchant specific data, a Custom 2
@@ -76,7 +76,7 @@ Format:
 
 `UPPERCASE(SHA512[<merchant_key>|<invoice_id>|<amount>|<currency_code>|UPPERCASE(SHA512[<merchant_Token>])])`
 
-<b>2.3</b> Sampe form :
+2.3. Sampe form :
 ````
 <form method="post">
     <!-- Replace your merchant_key, merchant_token, notify_url, return_url, cancel_url and check_value -->
