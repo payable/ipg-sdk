@@ -34,7 +34,6 @@ Sandbox: https://sandboxipgsdk.payable.lk/sdk/v2/payable-checkout.js
 - `return_url` - URL to redirect users when success
 - `cancel_url` - URL to redirect users when cancelled
 - `merchant_key` - Payable Merchant ID [Given by PAYable]
-- `merchant_token` - Payable Merchant Token [Given by PAYable]
 - `currency_code` - Currency Code (LKR)
 - `check_value` - Generated hash value to ensure extra security
 - `order_description` - Small Description for the Order
@@ -79,13 +78,12 @@ Format:
 <b>2.3.</b> Sampe form :
 ````html
 <form method="post">
-    <!-- Replace your merchant_key, merchant_token, notify_url, return_url, cancel_url and check_value -->
+    <!-- Replace your merchant_key, notify_url, return_url, cancel_url and check_value -->
     <input type="hidden" name="notify_url" id="notify_url" value="https://yoursite.com/payment/nortify" />
     <input type="hidden" name="return_url" id="return_url" value="https://yoursite.com/payment/return" />
     <input type="hidden" name="cancel_url" id="cancel_url" value="https://yoursite.com/payment/cancel" />
     <input type="hidden" name="merchant_key" id="merchant_key" value="D75XXXXXXXXX" />
-    <input type="hidden" name="check_value" id="check_value" value="A8907A75XXXXXXXXXXXXXXXXXXX" />
-    <input type="text" name="merchant_token" id="merchant_token" value="ADXXXXXXXXXXXXXXX" />
+    <input type="hidden" name="check_value" id="check_value" value="A8907A75XXXXXXXXXXXXXXXXXXX" />    
     <input type="hidden" name="custom_1" id="custom_1" value="test value" />
     <input type="hidden" name="custom_2" id="custom_2" value="test value" />
     <h3>Payment Details</h3>
@@ -281,8 +279,7 @@ If the customer made the payment by VISA or MASTER credit/debit card, following 
                 cancel_url: "https://yoursite.com/payment/cancel",
                 return_url: "https://yoursite.com/payment/return",
                 notify_url: "https://yoursite.com/payment/nortify",
-                merchant_key: "D7XXXXXXXXX",
-                merchant_token: "ADXXXXXXXXXXXX",
+                merchant_key: "D7XXXXXXXXX",               
                 check_value: "C6FXXXXXXXXXXXXXXXXXXXXXX",
                 amount: "59.91",
                 invoice_id: "INVvw5EA0d1pH",            
