@@ -129,13 +129,12 @@ Format:
 <b>3.1.</b> Submit your form json data into `payable.startPayment()`.
 
 ```javascript
-function returnForm(form_jsondata) {
-    payable.startPayment(form_jsondata);
-}
-```
-<b>3.2.</b> Payament related error messages.
+payable.startPayment(form_jsondata);
 
-You can get the error details from `payable.onError`. Error will be field validation (code : 3009) and other common error (code : 3008).
+```
+<b>3.2.</b> Payament related Error details.
+
+You can get the error details from the `payable.onError`. Error will be field validation (code : 3009) and other common error (code : 3008).
 
 ```javascript
    payable.onError = function onError(error) {
@@ -153,7 +152,7 @@ You can get the error details from `payable.onError`. Error will be field valida
 
 <b>3.3.</b> Listening to Payable Payment Gateway
 
-Once you connect to Payable Payment Gateway, You can listen to sdk in `payable.onCompleted` and `payable.onDismissed`. As soon as the payment is processed, You can get the payment process status.
+Once you connect to Payable Payment Gateway, You can listen to sdk with `payable.onCompleted` and `payable.onDismissed`. As soon as the payment is processed, You can get the payment process status.
 
 ```javascript
    payable.onCompleted = function onCompleted(data) {
@@ -237,9 +236,9 @@ If the customer made the payment by VISA or MASTER credit/debit card, following 
 - `cardNumber` - Masked card number (Ex: ************0008)
 - `checkValue` - combination of merchantKey, payableOrderId, payableTransactionId, payableAmount, payableCurrency, invoiceId, statusCode parameter set in a predefined sequence given by PAYable which then encrypted with merchantToken (a unique Secret value for the Merchant which was shared by PAYable) using SHA-512. 
 
-Format:
+    Format:
 
-`UPPERCASE(SHA512[<MerchantKey>|<payableOrderId>|<payableTransactionId>|<payableAmount>|<payableCurrency>|<invoiceId>|<statusCode>|UPPERCASE(SHA512[<MerchantToken>])])`
+    `UPPERCASE(SHA512[<MerchantKey>|<payableOrderId>|<payableTransactionId>|<payableAmount>|<payableCurrency>|<invoiceId>|<statusCode>|UPPERCASE(SHA512[<MerchantToken>])])`
 
 ##### Send response to callback
 
@@ -260,16 +259,12 @@ Format:
     <script src="https://sandboxipgsdk.payable.lk/sdk/v2/payable-checkout.js"></script>
     <script>
         window.addEventListener('load', function() {
-
             payable.onCompleted = function onCompleted(data) {
                 console.log("Payment Process Completed");
             };
-
             payable.onDismissed = function onDismissed() {
                 log("Payment Process Canceled");
             };
-
-
             payable.onError = function onError(error) {
                 if (error.code === 3009) { // field validation error
                     error.fields.forEach((field) => {
@@ -281,7 +276,6 @@ Format:
                 }
             };
         });
-
         function returnForm() {
             var payment = {                
                 cancel_url: "https://yoursite.com/payment/cancel",
@@ -332,4 +326,4 @@ Format:
 ```
 
 
-PAYable IPG SDK Integration
+PAYable Payment Gateway Integration
