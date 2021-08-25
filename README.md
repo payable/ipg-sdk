@@ -23,12 +23,12 @@ You can simply use an HTML Form to submit the below params to Payable Payment Ga
 
 Payable Checkout URL:
 
-```
+```html
 Sandbox: https://sandboxipgsdk.payable.lk/sdk/v2/payable-checkout.js
 ```
 <b>2.</b> Create your checkout form with basic required fields.
 
-2.1. Required Form Parameters:
+<b>2.1.</b> Required Form Parameters:
 
 - `notify_url` - URL to callback the status of the payment (Needs to be a URL accessible on a public IP/domain)
 - `return_url` - URL to redirect users when success
@@ -51,7 +51,7 @@ Sandbox: https://sandboxipgsdk.payable.lk/sdk/v2/payable-checkout.js
 - `billing_address_country` - Billing Country (LKA)
 - `billing_address_postcode` - Billing Postal Code
 
-2.2. Optional Form Parameters:
+<b>2.2.</b> Optional Form Parameters:
 
 - `custom_1` - Merchant specific data, a Custom 1
 - `custom_2` - Merchant specific data, a Custom 2
@@ -76,7 +76,7 @@ Format:
 
 `UPPERCASE(SHA512[<merchant_key>|<invoice_id>|<amount>|<currency_code>|UPPERCASE(SHA512[<merchant_Token>])])`
 
-2.3. Sampe form :
+<b>2.3.</b> Sampe form :
 ````html
 <form method="post">
     <!-- Replace your merchant_key, merchant_token, notify_url, return_url, cancel_url and check_value -->
@@ -126,18 +126,18 @@ Format:
 
 <b>3.</b> Communicate with PAYable SDK.
 
-<b>3.1</b> Submit your form json data into Payable.
+<b>3.1.</b> Submit your form json data into Payable.
+
 ```javascript
 function returnForm(form_jsondata) {
     payable.startPayment(form_jsondata);
 }
-
 ```
-<b>3.2</b> Submit your form json data into Payable.
+<b>3.2.</b> Submit your form json data into Payable.
 
 You can get the error details from `onError`. Error will be field validation (3009) and other common error (3008).
 
-```java
+```javascript
    payable.onError = function onError(error) {
         if (error.code === 3009) { // field validation error
             error.fields.forEach((field) => {
@@ -155,7 +155,7 @@ You can get the error details from `onError`. Error will be field validation (30
 
 Once you connect to Payable Payment Gateway, You can listen to sdk response. As soon as the payment is processed, You can get the payment status.
 
-```
+```javascript
    payable.onCompleted = function onCompleted(data) {
         console.log("Payment Process Completed")
     };
@@ -164,7 +164,7 @@ Once you connect to Payable Payment Gateway, You can listen to sdk response. As 
 
 If the payment gateway dismissed you can get the connection status.
 
-```
+```javascript
    payable.onDismissed = function onDismissed() {
         log("Payment Process Canceled");
     };
@@ -175,7 +175,7 @@ If the payment gateway dismissed you can get the connection status.
 
 ##### Sample Code 
 
-```
+```html
 <html>
 <head>
     <title>ABC Fashion</title>
@@ -270,7 +270,7 @@ your script on `notify_url` & then show the payment status to the customer in th
 
 ##### Server callback Json
 
-```
+```json
 {
     "merchantKey": "SXXXXXXXX",
     "payableOrderId": "oid-XXXXXXXX-XXX-XXXX-XXXX-XXXX",
@@ -323,7 +323,7 @@ Format:
 
 ##### Send response to callback
 
-```
+```json
 {
     "Status":200
 }
