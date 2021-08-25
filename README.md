@@ -126,16 +126,16 @@ Format:
 
 <b>3.</b> Communicate with PAYable SDK.
 
-<b>3.1.</b> Submit your form json data into Payable.
+<b>3.1.</b> Submit your form json data into `payable.startPayment()`.
 
 ```javascript
 function returnForm(form_jsondata) {
     payable.startPayment(form_jsondata);
 }
 ```
-<b>3.2.</b> Submit your form json data into Payable.
+<b>3.2.</b> Payament related error messages.
 
-You can get the error details from `onError`. Error will be field validation (3009) and other common error (3008).
+You can get the error details from `payable.onError`. Error will be field validation (code : 3009) and other common error (code : 3008).
 
 ```javascript
    payable.onError = function onError(error) {
@@ -151,9 +151,9 @@ You can get the error details from `onError`. Error will be field validation (30
 
 ```
 
-##### Listening to Payable Payment Gateway
+<b>3.3.</b> Listening to Payable Payment Gateway
 
-Once you connect to Payable Payment Gateway, You can listen to sdk response. As soon as the payment is processed, You can get the payment status.
+Once you connect to Payable Payment Gateway, You can listen to sdk in `payable.onCompleted` and `payable.onDismissed`. As soon as the payment is processed, You can get the payment process status.
 
 ```javascript
    payable.onCompleted = function onCompleted(data) {
@@ -171,89 +171,9 @@ If the payment gateway dismissed you can get the connection status.
 
 ```
 
+<hr> 
 
-
-##### Sample Code 
-
-```html
-<html>
-<head>
-    <title>ABC Fashion</title>
-    <script src="https://sandboxipgsdk.payable.lk/sdk/v2/payable-checkout.js"></script>
-    <script>
-        window.addEventListener('load', function() {
-
-            payable.onCompleted = function onCompleted(data) {
-                console.log("Payment Process Completed");
-            };
-
-            payable.onDismissed = function onDismissed() {
-                log("Payment Process Canceled");
-            };
-
-
-            payable.onError = function onError(error) {
-                if (error.code === 3009) { // field validation error
-                    error.fields.forEach((field) => {
-                        console.log(field.error)
-                    });
-                }
-                if (error.code === 3008) { 
-                    console.log(error.error)
-                }
-            };
-        });
-
-        function returnForm() {
-            var payment = {                
-                cancel_url: "https://yoursite.com/payment/cancel",
-                return_url: "https://yoursite.com/payment/return",
-                notify_url: "https://yoursite.com/payment/nortify",
-                merchant_key: "D7XXXXXXXXX",
-                merchant_token: "ADXXXXXXXXXXXX",
-                check_value: "C6FXXXXXXXXXXXXXXXXXXXXXX",
-                amount: "59.91",
-                invoice_id: "INVvw5EA0d1pH",            
-                order_description: "Payment for abc Fashion",
-                currency_code: "LKR",
-                custom_1: "customYuDSFk5Z1O",
-                custom_2: "test2",
-                customer_email: "testmail@gmail.com",
-                customer_first_name: "Shakthi",
-                customer_last_name: "Elon",
-                customer_mobile_phone: "07XXXXXXXX",
-                customer_phone: "07XXXXXXXX",
-                billing_address_city: "Vavuniya",
-                billing_address_company: "Pay Shop",
-                billing_address_country: "LKA",
-                billing_address_postcode: "43000",
-                billing_address_province: "North Province",
-                billing_address_street: "154",
-                billing_address_street2: "Koomankulam", 
-                shipping_address_city: "Colombo",
-                shipping_address_company: "Payable",
-                shipping_address_country: "LKA",
-                shipping_address_postcode: "43000",
-                shipping_address_province: "western province",
-                shipping_address_street: "Main street",
-                shipping_address_street2: "Temple road",
-                shipping_contact_email: "testshipmail@gmail.com",
-                shipping_contact_first_name: "Kumaran",
-                shipping_contact_last_name: "Test Lastname",
-                shipping_contact_mobile: "07XXXXXXXX",
-                shipping_contact_phone: "07XXXXXXXX",
-            };
-            payable.startPayment(payment);
-        }
-    </script>
-</head>
-<body>
-    <button onclick="returnForm()" name="btnpay">PAY Now</button>
-</body>
-</html>
-```
-
-#### Payment Notification
+#### Listen Payment Notification Data
 
 Payable Payment Gateway will send back to your website notifies the payment status to the `notify_url`. You need to get the request and send the response.
 
@@ -328,3 +248,88 @@ Format:
     "Status":200
 }
 ```
+
+<hr> 
+
+##### Sample Code 
+
+```html
+<html>
+<head>
+    <title>ABC Fashion Shop</title>
+    <script src="https://sandboxipgsdk.payable.lk/sdk/v2/payable-checkout.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+
+            payable.onCompleted = function onCompleted(data) {
+                console.log("Payment Process Completed");
+            };
+
+            payable.onDismissed = function onDismissed() {
+                log("Payment Process Canceled");
+            };
+
+
+            payable.onError = function onError(error) {
+                if (error.code === 3009) { // field validation error
+                    error.fields.forEach((field) => {
+                        console.log(field.error)
+                    });
+                }
+                if (error.code === 3008) { 
+                    console.log(error.error)
+                }
+            };
+        });
+
+        function returnForm() {
+            var payment = {                
+                cancel_url: "https://yoursite.com/payment/cancel",
+                return_url: "https://yoursite.com/payment/return",
+                notify_url: "https://yoursite.com/payment/nortify",
+                merchant_key: "D7XXXXXXXXX",
+                merchant_token: "ADXXXXXXXXXXXX",
+                check_value: "C6FXXXXXXXXXXXXXXXXXXXXXX",
+                amount: "59.91",
+                invoice_id: "INVvw5EA0d1pH",            
+                order_description: "Payment for ABC Fashion Shop",
+                currency_code: "LKR",
+                custom_1: "customYuDSFk5Z1O",
+                custom_2: "test2",
+                customer_email: "testmail@gmail.com",
+                customer_first_name: "Shakthi",
+                customer_last_name: "Elon",
+                customer_mobile_phone: "07XXXXXXXX",
+                customer_phone: "07XXXXXXXX",
+                billing_address_city: "Vavuniya",
+                billing_address_company: "Pay Shop",
+                billing_address_country: "LKA",
+                billing_address_postcode: "43000",
+                billing_address_province: "North Province",
+                billing_address_street: "154",
+                billing_address_street2: "Koomankulam", 
+                shipping_address_city: "Colombo",
+                shipping_address_company: "Payable",
+                shipping_address_country: "LKA",
+                shipping_address_postcode: "43000",
+                shipping_address_province: "western province",
+                shipping_address_street: "Main street",
+                shipping_address_street2: "Temple road",
+                shipping_contact_email: "testshipmail@gmail.com",
+                shipping_contact_first_name: "Kumaran",
+                shipping_contact_last_name: "Test Lastname",
+                shipping_contact_mobile: "07XXXXXXXX",
+                shipping_contact_phone: "07XXXXXXXX",
+            };
+            payable.startPayment(payment);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="returnForm()" name="btnpay">PAY Now</button>
+</body>
+</html>
+```
+
+
+PAYable IPG SDK Integration
