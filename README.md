@@ -77,7 +77,7 @@ Format:
 `UPPERCASE(SHA512[<merchant_key>|<invoice_id>|<amount>|<currency_code>|UPPERCASE(SHA512[<merchant_Token>])])`
 
 2.3. Sampe form :
-````
+````html
 <form method="post">
     <!-- Replace your merchant_key, merchant_token, notify_url, return_url, cancel_url and check_value -->
     <input type="hidden" name="notify_url" id="notify_url" value="https://yoursite.com/payment/nortify" />
@@ -127,7 +127,7 @@ Format:
 <b>3.</b> Communicate with PAYable SDK.
 
 <b>3.1</b> Submit your form json data into Payable.
-```
+```javascript
 function returnForm(form_jsondata) {
     payable.startPayment(form_jsondata);
 }
@@ -137,7 +137,7 @@ function returnForm(form_jsondata) {
 
 You can get the error details from `onError`. Error will be field validation (3009) and other common error (3008).
 
-```
+```java
    payable.onError = function onError(error) {
         if (error.code === 3009) { // field validation error
             error.fields.forEach((field) => {
