@@ -75,7 +75,7 @@ Format:
 
 `UPPERCASE(SHA512[<merchant_key>|<invoice_id>|<amount>|<currency_code>|UPPERCASE(SHA512[<merchant_Token>])])`
 
-<b>2.3.</b> Sampe form :
+<b>2.3.</b> Sample form :
 ````html
 <form method="post">
     <!-- Replace your merchant_key, notify_url, return_url, cancel_url and check_value -->
