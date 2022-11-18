@@ -18,7 +18,9 @@ You can simply use an HTML Form to submit the below params to Payable Payment Ga
 ### Version V3 - One time payment and Recurring payment
 
 <hr>
+
 ### Implementation
+
 
 <b>1.</b> Add Payable Checkout URL into your checkout page.
 
