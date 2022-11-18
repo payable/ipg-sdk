@@ -21,7 +21,6 @@ You can simply use an HTML Form to submit the below params to Payable Payment Ga
 
 ### Implementation
 
-
 <b>1.</b> Add Payable Checkout URL into your checkout page.
 
 Payable Checkout URL:
@@ -357,9 +356,11 @@ If the customer made the payment by VISA or MASTER credit/debit card, following 
 </html>
 ```
 <hr>
+
 ### Version V2
 
 <hr>
+
 ### Implementation
 
 <b>1.</b> Add Payable Checkout URL into your checkout page.
