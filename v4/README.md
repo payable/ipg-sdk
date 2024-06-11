@@ -57,7 +57,7 @@ QA: https://qaipgsdk.payable.lk/sdk/v4/payable-checkout.js
 - `startDate` - Payment Start Date
 - `endDate` - Payment End Date (It can be any date or FOREVER)
 - `recurringAmount` - Recurring payment Amount
-- `interval` - Payment Interval (It can be MONTHLY,YEARLY)
+- `interval` - Payment Interval (It can be MONTHLY,ANNUALLY)
 - `isRetry` - Is Retry
 - `retryAttempts` - Retry Attempts
 - `doFirstPayment` - Do First Payment
