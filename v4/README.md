@@ -260,7 +260,7 @@ If the customer made the payment by VISA or MASTER credit/debit card, following 
 <html>
 <head>
     <title>ABC Fashion Shop</title>
-    <script src="https://qaipgsdk.payable.lk/sdk/v4/payable-checkout.js"></script>
+    <script src="https://sandboxipgsdk.payable.lk/sdk/v4/payable-checkout.js"></script>
     <script>
         
         function returnForm() {           
