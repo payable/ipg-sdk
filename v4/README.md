@@ -1,4 +1,4 @@
-### PAYable IPG SDK - QA ENV
+### PAYable IPG SDK 
 
 PAYable IPG SDK helps to integrate the payment gateway of your website.
 
@@ -26,7 +26,10 @@ You can simply use an HTML Form to submit the below params to Payable Payment Ga
 Payable Checkout URL:
 
 ```html
-QA: https://qaipgsdk.payable.lk/sdk/v4/payable-checkout.js
+Sandbox: https://sandboxipgsdk.payable.lk/sdk/v4/payable-checkout.js
+```
+```html
+Live: https://ipgsdk.payable.lk/sdk/v4/payable-checkout.js
 ```
 
 <b>2.</b> Create your checkout form with basic required fields.
