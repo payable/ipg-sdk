@@ -243,6 +243,12 @@ domain based URL as your `notifyUrl` is to directly notify your server.
 If the customer made the payment by VISA or MASTER credit/debit card, following cardHolderName and cardNumber parameters will also be available.
 - `cardHolderName` -Name on the Card
 - `cardNumber` - Masked card number (Ex: ************0008)
+- `checkValue` - combination of merchantKey, payableOrderId, payableTransactionId, payableAmount, payableCurrency, invoiceId, statusCode parameter set in a predefined sequence given by PAYable which then encrypted with merchantToken (a unique Secret value for the Merchant which was shared by PAYable) using SHA-512.
+
+Format:
+
+`UPPERCASE(SHA512[<merchantKey>|<payableOrderId>|<payableTransactionId>|<payableAmount>|<payableCurrency>|<invoiceId>|<statusCode>|UPPERCASE(SHA512[<MerchantToken>])])`
+
 
 ##### Send response to callback
 
