@@ -229,8 +229,8 @@ domain based URL as your `notifyUrl` is to directly notify your server.
 - `payableAmount`- Total amount of the Payment
 - `payableCurrency` - Currency Code of the Payment (LKR Only)
 - `invoiceNo` - Unique Id sent by Merchant to the Checkout page
-- `statusMessage` - Message received from payment gateway which the customer tried to pay(SUCCESS/FAILURE)
 - `statusCode` - (SUCCESS = 1, FAILED = 2, REFUNDED = 7)
+- `statusMessage` - Message received from payment gateway which the customer tried to pay(SUCCESS/FAILURE)
 - `paymentType` - Payment type selected during the Checkout
     1. CARD (SUPPORTED)
     2. BANKING (Not implemented yet)
